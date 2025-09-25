@@ -9,6 +9,11 @@ export type Photo = {
   title: string;
   description: string;
   imageUrl: string;
+  createdBy?: {
+    _id: string;
+    fullName: string;
+    username: string;
+  };
   createdAt?: string;
   updatedAt?: string;
   __v?: number;

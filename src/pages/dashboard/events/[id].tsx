@@ -63,10 +63,29 @@ export default function EventDetailPage() {
               </div>
               <h1 className="text-2xl font-semibold">{photo.title}</h1>
               <p className="mt-2 text-gray-700">{photo.description}</p>
+              <p className="text-sm text-gray-500">
+                Created by {photo.createdBy?.fullName || "Unknown"}
+              </p>
 
               <div className="mt-6 space-x-2">
-                <button onClick={() => setEditing(true)} className="px-4 py-2 bg-blue-600 text-white rounded">Edit</button>
-                <button onClick={handleDelete} className="px-4 py-2 bg-red-600 text-white rounded">Delete</button>
+                {/* <button onClick={() => setEditing(true)} className="px-4 py-2 bg-blue-600 text-white rounded">Edit</button>
+                <button onClick={handleDelete} className="px-4 py-2 bg-red-600 text-white rounded">Delete</button> */}
+                  {photo.createdBy?._id === user?._id && ( // <--- hanya tampil untuk pemilik
+                  <>
+                    <button
+                      onClick={() => setEditing(true)}
+                      className="px-4 py-2 bg-blue-600 text-white rounded"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={handleDelete}
+                      className="px-4 py-2 bg-red-600 text-white rounded"
+                    >
+                      Delete
+                    </button>
+                  </>
+                )}
                 <button onClick={() => router.push("/dashboard/events")} className="px-4 py-2 border rounded">Back</button>
               </div>
             </>
